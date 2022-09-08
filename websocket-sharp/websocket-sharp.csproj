@@ -9,9 +9,17 @@
     <OutputType>Library</OutputType>
     <RootNamespace>WebSocketSharp</RootNamespace>
     <AssemblyName>websocket-sharp</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>websocket-sharp.snk</AssemblyOriginatorKeyFile>
+    <PackageVersion>1.0</PackageVersion>
+    <AssemblyName>Aerostrat.websocket-sharp</AssemblyName>
+    <PackageId>Aerostrat.websocket-sharp</PackageId>
+    <RepositoryUrl>https://github.com/Aerostrat/websocket-sharp</RepositoryUrl>
+    <Version>1.0</Version>
+    <Company>Aerostrat</Company>
+    <Authors>Aerostrat, sta</Authors>
+    <Description>Aerostrat's fork of websocket-sharp.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -146,4 +154,14 @@
     <Folder Include="Net\" />
     <Folder Include="Net\WebSockets\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="..\packages\NuGet.Build.Tasks.Pack.6.3.0\build\NuGet.Build.Tasks.Pack.targets" Condition="Exists('..\packages\NuGet.Build.Tasks.Pack.6.3.0\build\NuGet.Build.Tasks.Pack.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NuGet.Build.Tasks.Pack.6.3.0\build\NuGet.Build.Tasks.Pack.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NuGet.Build.Tasks.Pack.6.3.0\build\NuGet.Build.Tasks.Pack.targets'))" />
+  </Target>
 </Project>
